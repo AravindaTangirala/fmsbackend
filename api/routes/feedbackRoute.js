@@ -6,4 +6,6 @@ const feedbackControllers = require("../controllers/feedbackControllers");
 router.get("/", feedbackControllers.get_feedback);
 router.post("/feedback_submit", feedbackControllers.post_feedbacksubmit);
 router.post("/feedback_summary", feedbackControllers.post_feedbacksummary);
+exports.get_excel;
+router.get("/get_excel", feedbackControllers.get_excel);
 module.exports = router;
