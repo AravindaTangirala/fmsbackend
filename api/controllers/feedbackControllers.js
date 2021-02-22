@@ -63,44 +63,12 @@ exports.get_excel = async (req, res, next) => {
       { header: "rating", key: "rating", width: 20 },
       { header: "comments", key: "comments", width: 20 },
     ];
-    let count = 1;
-    users.forEach((user) => {
-      // user._id = count;
-      worksheet.addRow(user);
-      // count += 1;
-    });
+
+    worksheet.addRows(users);
     worksheet.getRow(1).eachCell((cell) => {
       cell.font = { bold: true };
     });
-    // worksheet.eachRow({ includeEmpty: true }, function (row) {
-    //   row.eachCell(function (cell, colNumber) {
-    //     cell.font = {
-    //       name: "Arial",
-    //       family: 2,
-    //       bold: false,
-    //       size: 14,
-    //     };
-    //     cell.alignment = {
-    //       vertical: "middle",
-    //       horizontal: "center",
-    //     };
-    //   });
-    // });
-    // worksheet.addRows(users);
-    // workbook.xlsx.writeFile("newSaveeee.xlsx").then((response) => {
-    //   console.log("file is written");
-    //   console.log(path.join(__dirname, "../newSaveeee.xlsx"));
-    //   res.sendFile(path.join(__dirname, "../newSaveeee.xlsx"));
-    // });
-    // const data = await workbook.xlsx.writeFile("users.xlsx");
-    // res.send(data);
-    // const data = await workbook.xlsx.writeBuffer().then((data) => {
-    //   const blob = new Blob([data], {
-    //     type:
-    //       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8",
-    //   });
-    //   saveAs(blob, "users.xlsx");
-    // });
+
     res.setHeader(
       "Content-Type",
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
